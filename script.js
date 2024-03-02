@@ -1,14 +1,15 @@
 function rotateList() {
     const listInput = document.getElementById('list').value;
-    const rotationInput = parseInt(document.getElementById('rotation').value);
+    const rotationInput = document.getElementById('rotation').value.trim();
 
-    if (!listInput || isNaN(rotationInput)) {
+    if (!listInput || !rotationInput || isNaN(rotationInput)) {
         alert('Please enter valid input.');
         return;
     }
 
     const list = listInput.split(',').map(item => parseInt(item.trim()));
-    const rotatedList = rotateListFunc(list, rotationInput);
+    const rotation = parseInt(rotationInput);
+    const rotatedList = rotateListFunc(list, rotation);
     
     document.getElementById('result').textContent = 'Rotated List: ' + rotatedList.join(', ');
 }
